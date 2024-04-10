@@ -34,11 +34,13 @@ def model_report(y_pred, y_test, file_path):
         with open(file_path, "w") as file:
             # Accuracy Score
             acc_score = accuracy_score(y_test, y_pred)
+            print("Accuracy score of the model: {:.4f}\n".format(acc_score))
             file.write("Accuracy score of the model: {:.4f}\n".format(acc_score))
         
             # Classification report
             file.write("Classification report:\n")
             class_rep = classification_report(y_test, y_pred)
+            print(class_rep)
             file.write(class_rep + "\n")
         
             # Confusion Matrix
