@@ -22,11 +22,13 @@
     text-align: center; 
     color: #FFFFFF;
     text-size: 20px;
-    margin-bottom:20px
+    margin-bottom:20px;
+    transition: background-image 0.3s ease;
+
   }
 
   .tital:hover {
-    background-image: url("paper.gif");
+    background-image: url("https://raw.githubusercontent.com/AryaPatel2110/ml_project/main/templates/bg.jpeg");
     padding: 5px; 
     border-radius: 8px; 
     text-align: center; 
@@ -150,7 +152,7 @@
     <label for="person_emp_length">Co/Applicant's Employment length (in years)* :</label>
     <input type="number" id="person_emp_length" name="person_emp_length" step="0.1" required>
 
-    <label for="loan_intent">Loan Intent:</label>
+    <label for="loan_intent">Loan Intent* :</label>
     <select id="loan_intent" name="loan_intent" required>
       <option value="PERSONAL">PERSONAL</option>
       <option value="EDUCATION">EDUCATION</option>
@@ -159,8 +161,11 @@
       <option value="HOMEIMPROVEMENT">HOMEIMPROVEMENT</option>
     </select>
 
-    <label for="loan_amnt">Loan Amount:</label>
+    <label for="loan_amnt">Loan Amount* :</label>
     <input type="number" id="loan_amnt" name="loan_amnt" required onchange="calculateLoanPercentage()">
+
+    <label for="loan_tenure">Loan Tenure :</label>
+    <input type="number" id="loan_tenure" name="loan_tenure" >
 
     <label for="loan_percent_income">Loan as Percent of Income* :</label>
     <input type="number" id="loan_percent_income" name="loan_percent_income" readonly>
@@ -169,15 +174,8 @@
     <input type="number" id="loan_int_rate" name="loan_int_rate" step="0.01" required>
 
     <label for="loan_grade">Loan Grade* :</label>
-    <select id="loan_grade" name="loan_grade" required>
-      <option value="A">A</option>
-      <option value="B">B</option>
-      <option value="C">C</option>
-      <option value="D">D</option>
-      <option value="E">E</option>
-      <option value="F">F</option>
-      <option value="G">G</option>
-    </select>
+    <input type="text" id="loan_grade" name="loan_grade" readonly>
+     
 
     <label for="cb_person_default_on_file">Default on File (Yes/No)* :</label>
     <select id="cb_person_default_on_file" name="cb_person_default_on_file" required>
@@ -193,7 +191,9 @@
 </div>
 
 <div class="report-container" id="report-container" style="display: none;">
+  <div class="tital">
   <h2 style="text-align: center;">Applicant Report</h2>
+  </div>
   <ul>
     <li><strong>Applicant's Name:</strong> <span id="report-applicant-name"></span></li>
     <li><strong>Co-Applicant's Name:</strong> <span id="report-coapplicant-name"></span></li>
@@ -215,6 +215,31 @@
 </div>
 
 <script>
+  function autoSelectLoanGrade() {
+    var loanIntRate = parseFloat(document.getElementById("loan_int_rate").value);
+    var loanGrade = document.getElementById("loan_grade");
+  
+    if (loanIntRate <= 10.5) {
+      loanGrade.value = "A";
+    } else if (loanIntRate <= 12.6) {
+      loanGrade.value = "B";
+    } else if (loanIntRate <= 16.11) {
+      loanGrade.value = "C";
+    } else if (loanIntRate <= 18.5) {
+      loanGrade.value = "D";
+    } else if (loanIntRate <= 20.5) {
+      loanGrade.value = "E";
+    } else if (loanIntRate <= 22.1) {
+      loanGrade.value = "F";
+    } else {
+      loanGrade.value = "G";
+    }
+  }
+  
+  // Call the function when the loan_int_rate input changes
+  document.getElementById("loan_int_rate").addEventListener("change", autoSelectLoanGrade);
+
+  
   function calculateLoanPercentage() {
     var loanAmount = parseFloat(document.getElementById("loan_amnt").value);
     var personIncome = parseFloat(document.getElementById("person_income").value);
