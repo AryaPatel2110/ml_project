@@ -94,8 +94,7 @@ class BinaryEncoder(BaseEstimator, TransformerMixin):
     def transform(self, X):
         X[self.column_name] = X[self.column_name].map({'N': 0, 'Y': 1})
         return X
-
-
+    
 class OrdinalEncoder(BaseEstimator, TransformerMixin):
     def __init__(self, column_name):
         self.column_name = column_name
