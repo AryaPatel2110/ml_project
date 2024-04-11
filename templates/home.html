@@ -9,7 +9,7 @@
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-image: url('https://i.pinimg.com/originals/52/27/89/522789fd6f4911e2fbab63809ab598e2.jpg'); /* Replace 'background_image.jpg' with your image file */
+    background-image: url('bg.jpeg'); /* Replace 'background_image.jpg' with your image file */
     background-size: cover;
     background-position: center;
   }
@@ -114,16 +114,27 @@
     <input type="submit" value="Submit">
   </form>
 
-  <h2> The Prediction {{results}} </h2>
+  <h2 id="predictionText"> <!-- Prediction will be displayed here --> </h2>
 </div>
 
 <script>
 function calculateLoanPercentage() {
     var loanAmount = parseFloat(document.getElementById("loan_amnt").value);
     var personIncome = parseFloat(document.getElementById("person_income").value);
-    var loanPercentIncome = (loanAmount / personIncome) * 100;
+    var loanPercentIncome = (loanAmount / personIncome);
     document.getElementById("loan_percent_income").value = loanPercentIncome.toFixed(2);
 }
+
+function displayPrediction(results) {
+  if (results === 1.0) {
+      alert("Loan Default");
+  } else {
+      alert("Non-Loan Default");
+  }
+}
+
+// Call the function with the initial value of 'results'
+displayPrediction({{ results }}); 
 </script>
 
 </body>
