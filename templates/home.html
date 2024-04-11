@@ -4,82 +4,120 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Loan Application Form</title>
+<link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 <style>
   body {
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins';
     margin: 0;
     padding: 0;
-    background-image: url('https://raw.githubusercontent.com/AryaPatel2110/ml_project/main/artifacts/assets/bg-2.jpg');
+    background-color: rgba(124, 122, 236, 1);
     background-size: cover;
     background-position: center;
-}
+  }
 
-.form-container {
-    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
-    backdrop-filter: blur(5px); /* Apply backdrop blur */
+  .form-container {
+    background-color: rgba(255, 255, 255, 1);
+    backdrop-filter: blur(5px);
     border-radius: 8px;
     padding: 20px;
     max-width: 600px;
-    margin: 100px auto; /* Adjust the margin to center the form vertically */
-    transition: all 0.3s ease; /* Transition for all properties with a duration of 0.3 seconds and ease timing function */
-}
+    margin: 100px auto;
+    transition: all 0.3s ease;
+    font-family: 'Poppins';
+  }
 
-.form-container:hover {
-    transform: scale(1.1); /* Scale up by 10% on hover */
-}
+  .report-container {
+    background-color: rgba(255, 255, 255, 1);
+    backdrop-filter: blur(5px);
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 600px;
+    margin: 100px auto;
+    transition: all 0.3s ease;
+    font-family: 'Poppins';
+    position: relative;
+  }
 
-form {
+  .report-container.default {
+    background-color: #ffcccc; /* Light red */
+  }
+
+  .report-container.non-default {
+    background-color: #ccffcc; /* Light green */
+  }
+
+  .form-container:hover, .report-container:hover {
+    transform: scale(1.1);
+  }
+
+  form {
     margin: 0;
-}
+  }
 
-label {
+  label {
     display: block;
     margin-bottom: 5px;
-    font-weight: bold;
-    color: #333; /* Set label color for better readability */
-}
+    color: #333;
+    font-family: 'Poppins', Arial, sans-serif;
+    font-size: 12px;
+  }
 
-input[type="number"],
-select {
-    width: calc(100% - 20px); /* Adjust the width to accommodate padding */
+  input[type="number"],
+  input[type="text"],
+  select {
     padding: 8px;
     margin-bottom: 10px;
     border-radius: 5px;
     border: 1px solid #ccc;
     box-sizing: border-box;
-    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background for input fields */
-    backdrop-filter: blur(3px); /* Apply backdrop blur for input fields */
-}
+    background-color: rgba(255, 255, 255, 1);
+    backdrop-filter: blur(3px);
+    width: 100%;
+    font-family: 'Poppins', Arial, sans-serif;
+    font-size: 12px;
+  }
 
-input[type="submit"] {
-    background-color: #4CAF50;
+  input[type="submit"] {
+    background-color: rgba(124, 122, 236, 1);
+    margin-top: 20px;
     color: white;
-    padding: 10px 20px;
+    padding: 10px 10px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease; /* Add transition for background color change */
-}
+    transition: background-color 0.3s ease;
+    width: 100%;
+    font-family: 'Poppins', Arial, sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+  }
 
-input[type="submit"]:hover {
-    background-color: #45a049;
-}
-
+  input[type="submit"]:hover {
+    background-color: #721fff;
+  }
 </style>
 </head>
 <body>
 
-<div class="form-container">
-  <h2 style="text-align: center;">Loan Application Form</h2>
 
-  <form action="{{ url_for('predict_datapoint')}}" method="post">
-    <label for="person_age">Person's Age:</label>
+<div class="form-container">
+  <h2 style="text-align: center;">Loan Default Prediction</h2>
+
+  <form id="loan_application_form">
+
+    <label for="app_name">Applicant's Name* :</label>
+    <input type="text" id="app_name" name="app_name" required>
+
+    <label for="coapp_name">Co-Applicant's Name :</label>
+    <input type="text" id="coapp_name" name="coapp_name">
+
+    <label for="person_age">Co/Applicant Age* :</label>
     <input type="number" id="person_age" name="person_age" required>
 
-    <label for="person_income">Person's Income:</label>
+    <label for="person_income">Co/Applicant's Annual Income* :</label>
     <input type="number" id="person_income" name="person_income" required>
 
-    <label for="person_home_ownership">Person's Home Ownership:</label>
+    <label for="person_home_ownership">Co/Applicant's Home Ownership* :</label>
     <select id="person_home_ownership" name="person_home_ownership" required>
       <option value="RENT">RENT</option>
       <option value="OWN">OWN</option>
@@ -87,7 +125,7 @@ input[type="submit"]:hover {
       <option value="OTHER">OTHER</option>
     </select>
 
-    <label for="person_emp_length">Person's Employment Length:</label>
+    <label for="person_emp_length">Co/Applicant's Employment length (in years)* :</label>
     <input type="number" id="person_emp_length" name="person_emp_length" step="0.1" required>
 
     <label for="loan_intent">Loan Intent:</label>
@@ -99,7 +137,16 @@ input[type="submit"]:hover {
       <option value="HOMEIMPROVEMENT">HOMEIMPROVEMENT</option>
     </select>
 
-    <label for="loan_grade">Loan Grade:</label>
+    <label for="loan_amnt">Loan Amount:</label>
+    <input type="number" id="loan_amnt" name="loan_amnt" required onchange="calculateLoanPercentage()">
+
+    <label for="loan_percent_income">Loan as Percent of Income* :</label>
+    <input type="number" id="loan_percent_income" name="loan_percent_income" readonly>
+
+    <label for="loan_int_rate">Loan Interest Rate* :</label>
+    <input type="number" id="loan_int_rate" name="loan_int_rate" step="0.01" required>
+
+    <label for="loan_grade">Loan Grade* :</label>
     <select id="loan_grade" name="loan_grade" required>
       <option value="A">A</option>
       <option value="B">B</option>
@@ -110,32 +157,43 @@ input[type="submit"]:hover {
       <option value="G">G</option>
     </select>
 
-    <label for="loan_amnt">Loan Amount:</label>
-    <input type="number" id="loan_amnt" name="loan_amnt" required onchange="calculateLoanPercentage()">
-
-    <label for="loan_int_rate">Loan Interest Rate:</label>
-    <input type="number" id="loan_int_rate" name="loan_int_rate" step="0.01" required>
-
-    <label for="loan_percent_income">Loan as Percent of Income:</label>
-    <input type="number" id="loan_percent_income" name="loan_percent_income" readonly>
-
-    <label for="cb_person_default_on_file">Default on File (Yes/No):</label>
+    <label for="cb_person_default_on_file">Default on File (Yes/No)* :</label>
     <select id="cb_person_default_on_file" name="cb_person_default_on_file" required>
       <option value="Y">Yes</option>
       <option value="N">No</option>
     </select>
 
-    <label for="cb_person_cred_hist_length">Credit History Length:</label>
+    <label for="cb_person_cred_hist_length">Credit History Length* :</label>
     <input type="number" id="cb_person_cred_hist_length" name="cb_person_cred_hist_length" required>
 
     <input type="submit" value="Submit">
   </form>
+</div>
 
-  <h2 id="predictionText"> <!-- Prediction will be displayed here --> </h2>
+<div class="report-container" id="report-container" style="display: none;">
+  <h2 style="text-align: center;">Applicant Report</h2>
+  <ul>
+    <li><strong>Applicant's Name:</strong> <span id="report-applicant-name"></span></li>
+    <li><strong>Co-Applicant's Name:</strong> <span id="report-coapplicant-name"></span></li>
+    <li><strong>Co/Applicant Age:</strong> <span id="report-age"></span></li>
+    <li><strong>Co/Applicant's Annual Income:</strong> <span id="report-income"></span></li>
+    <li><strong>Co/Applicant's Home Ownership:</strong> <span id="report-home-ownership"></span></li>
+    <li><strong>Co/Applicant's Employment length (in years):</strong> <span id="report-employment-length"></span></li>
+    <li><strong>Loan Intent:</strong> <span id="report-loan-intent"></span></li>
+    <li><strong>Loan Amount:</strong> <span id="report-loan-amount"></span></li>
+    <li><strong>Loan as Percent of Income:</strong> <span id="report-loan-percent-income"></span></li>
+    <li><strong>Loan Interest Rate:</strong> <span id="report-loan-interest-rate"></span></li>
+    <li><strong>Loan Grade:</strong> <span id="report-loan-grade"></span></li>
+    <li><strong>Default on File:</strong> <span id="report-default-on-file"></span></li>
+    <li><strong>Credit History Length:</strong> <span id="report-credit-history-length"></span></li>
+  </ul>
+  <div id="prediction-indicator" style="padding: 10px; border-radius: 8px; text-align: center; color: #FFFFFF;text-size: 20px">
+    <strong><span id="report-prediction" class="prediction"></span></strong>
+  </div>
 </div>
 
 <script>
-function calculateLoanPercentage() {
+  function calculateLoanPercentage() {
     var loanAmount = parseFloat(document.getElementById("loan_amnt").value);
     var personIncome = parseFloat(document.getElementById("person_income").value);
     var loanPercentIncome = (loanAmount / personIncome);
@@ -143,19 +201,51 @@ function calculateLoanPercentage() {
 }
 
 function displayPrediction(results) {
-  if (results === 1.0) {
-      alert("Loan Default");
-  } else {
-      alert("Non-Loan Default");
-  }
+  var predictionText = results === 1.0 ? "RISK" : "SAFE";
+  var reportPrediction = document.getElementById("report-prediction");
+  var predictionIndicator = document.getElementById("prediction-indicator");
+
+  
+  // Populate report with input values
+  document.getElementById("report-applicant-name").innerText = document.getElementById("app_name").value;
+  document.getElementById("report-coapplicant-name").innerText = document.getElementById("coapp_name").value;
+  document.getElementById("report-age").innerText = document.getElementById("person_age").value;
+  document.getElementById("report-income").innerText = document.getElementById("person_income").value;
+  document.getElementById("report-home-ownership").innerText = document.getElementById("person_home_ownership").value;
+  document.getElementById("report-employment-length").innerText = document.getElementById("person_emp_length").value;
+  document.getElementById("report-loan-intent").innerText = document.getElementById("loan_intent").value;
+  document.getElementById("report-loan-amount").innerText = document.getElementById("loan_amnt").value;
+  document.getElementById("report-loan-percent-income").innerText = document.getElementById("loan_percent_income").value;
+  document.getElementById("report-loan-interest-rate").innerText = document.getElementById("loan_int_rate").value;
+  document.getElementById("report-loan-grade").innerText = document.getElementById("loan_grade").value;
+  document.getElementById("report-default-on-file").innerText = document.getElementById("cb_person_default_on_file").value;
+  document.getElementById("report-credit-history-length").innerText = document.getElementById("cb_person_cred_hist_length").value;
+  
+  // Display prediction result
+  reportPrediction.innerText = predictionText;
+  reportPrediction.classList.add(predictionText.toLowerCase().replace(/\s/g, '-'));
+  
+  // Display the report container
+  document.getElementById("report-container").style.display = "block";
+
+   // Change background color based on prediction
+   predictionIndicator.style.backgroundColor = results === 0 ? "#77DD77" : "#FF6961";
+
+  // Move focus to the report container
+  document.getElementById("report-container").scrollIntoView({ behavior: "smooth" });
 }
 
-// Call the function with the initial value of 'results'
-displayPrediction({{ results }}); 
+document.getElementById("loan_application_form").addEventListener("submit", function(event) {
+  // Prevent the default form submission behavior
+  event.preventDefault();
+
+  // Simulate prediction results (Replace this with your actual prediction logic)
+  var results = Math.random() >= 0.5 ? 1.0 : 0.0;
+
+  // Display prediction
+  displayPrediction(results);
+});
 </script>
 
 </body>
 </html>
-
-
-
