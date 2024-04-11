@@ -15,6 +15,26 @@
     background-position: center;
   }
 
+  .tital{
+    background-color: rgba(124, 122, 236, 1);
+    padding: 5px; 
+    border-radius: 8px; 
+    text-align: center; 
+    color: #FFFFFF;
+    text-size: 20px;
+    margin-bottom:20px
+  }
+
+  .tital:hover {
+    background-image: url("paper.gif");
+    padding: 5px; 
+    border-radius: 8px; 
+    text-align: center; 
+    color: #FFFFFF;
+    text-size: 20px
+    margin-bottom:20px
+  }
+
   .form-container {
     background-color: rgba(255, 255, 255, 1);
     backdrop-filter: blur(5px);
@@ -101,8 +121,10 @@
 
 
 <div class="form-container">
-  <h2 style="text-align: center;">Loan Default Prediction</h2>
-
+  
+  <div class="tital">
+    <h2 style="text-align: center;">Loan Default Prediction</h2> 
+  </div>
   <form id="loan_application_form">
 
     <label for="app_name">Applicant's Name* :</label>
