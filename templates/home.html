@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Loan Application Form</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('https://i.pinimg.com/originals/52/27/89/522789fd6f4911e2fbab63809ab598e2.jpg'); /* Replace 'background_image.jpg' with your image file */
+    background-size: cover;
+    background-position: center;
+  }
+  .form-container {
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: 20px;
+    padding: 20px;
+    max-width: 600px;
+    margin: 100px auto; /* Adjust the margin to center the form vertically */
+  }
+  form {
+    margin: 0;
+  }
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  input[type="number"],
+  select {
+    width: calc(100% - 20px); /* Adjust the width to accommodate padding */
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  input[type="submit"]:hover {
+    background-color: #45a049;
+  }
+</style>
+</head>
+<body>
+
+<div class="form-container">
+  <h2 style="text-align: center;">Loan Application Form</h2>
+
+  <form action="{{ url_for('predict_datapoint')}}" method="post">
+    <label for="person_age">Person's Age:</label>
+    <input type="number" id="person_age" name="person_age" required>
+
+    <label for="person_income">Person's Income:</label>
+    <input type="number" id="person_income" name="person_income" required>
+
+    <label for="person_home_ownership">Person's Home Ownership:</label>
+    <select id="person_home_ownership" name="person_home_ownership" required>
+      <option value="RENT">RENT</option>
+      <option value="OWN">OWN</option>
+      <option value="MORTGAGE">MORTGAGE</option>
+      <option value="OTHER">OTHER</option>
+    </select>
+
+    <label for="person_emp_length">Person's Employment Length:</label>
+    <input type="number" id="person_emp_length" name="person_emp_length" step="0.1" required>
+
+    <label for="loan_intent">Loan Intent:</label>
+    <select id="loan_intent" name="loan_intent" required>
+      <option value="PERSONAL">PERSONAL</option>
+      <option value="EDUCATION">EDUCATION</option>
+      <option value="MEDICAL">MEDICAL</option>
+      <option value="VENTURE">VENTURE</option>
+      <option value="HOMEIMPROVEMENT">HOMEIMPROVEMENT</option>
+    </select>
+
+    <label for="loan_grade">Loan Grade:</label>
+    <select id="loan_grade" name="loan_grade" required>
+      <option value="A">A</option>
+      <option value="B">B</option>
+      <option value="C">C</option>
+      <option value="D">D</option>
+      <option value="E">E</option>
+      <option value="F">F</option>
+      <option value="G">G</option>
+    </select>
+
+    <label for="loan_amnt">Loan Amount:</label>
+    <input type="number" id="loan_amnt" name="loan_amnt" required onchange="calculateLoanPercentage()">
+
+    <label for="loan_int_rate">Loan Interest Rate:</label>
+    <input type="number" id="loan_int_rate" name="loan_int_rate" step="0.01" required>
+
+    <label for="loan_percent_income">Loan as Percent of Income:</label>
+    <input type="number" id="loan_percent_income" name="loan_percent_income" readonly>
+
+    <label for="cb_person_default_on_file">Default on File (Yes/No):</label>
+    <select id="cb_person_default_on_file" name="cb_person_default_on_file" required>
+      <option value="Y">Yes</option>
+      <option value="N">No</option>
+    </select>
+
+    <label for="cb_person_cred_hist_length">Credit History Length:</label>
+    <input type="number" id="cb_person_cred_hist_length" name="cb_person_cred_hist_length" required>
+
+    <input type="submit" value="Submit">
+  </form>
+
+  <h2> The Prediction {{results}} </h2>
+</div>
+
+<script>
+function calculateLoanPercentage() {
+    var loanAmount = parseFloat(document.getElementById("loan_amnt").value);
+    var personIncome = parseFloat(document.getElementById("person_income").value);
+    var loanPercentIncome = (loanAmount / personIncome) * 100;
+    document.getElementById("loan_percent_income").value = loanPercentIncome.toFixed(2);
+}
+</script>
+
+</body>
+</html>
