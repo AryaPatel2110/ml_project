@@ -9,45 +9,62 @@
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-image: url('bg.jpeg'); /* Replace 'background_image.jpg' with your image file */
+    background-image: url('https://raw.githubusercontent.com/AryaPatel2110/ml_project/main/artifacts/assets/bg.jpeg');
     background-size: cover;
     background-position: center;
-  }
-  .form-container {
-    background-color: rgba(255, 255, 255, 1);
-    border-radius: 20px;
+}
+
+.form-container {
+    background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent background */
+    backdrop-filter: blur(5px); /* Apply backdrop blur */
+    border-radius: 8px;
     padding: 20px;
     max-width: 600px;
     margin: 100px auto; /* Adjust the margin to center the form vertically */
-  }
-  form {
+    transition: all 0.3s ease; /* Transition for all properties with a duration of 0.3 seconds and ease timing function */
+}
+
+.form-container:hover {
+    transform: scale(1.1); /* Scale up by 10% on hover */
+}
+
+form {
     margin: 0;
-  }
-  label {
+}
+
+label {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
-  }
-  input[type="number"],
-  select {
+    color: #333; /* Set label color for better readability */
+}
+
+input[type="number"],
+select {
     width: calc(100% - 20px); /* Adjust the width to accommodate padding */
     padding: 8px;
     margin-bottom: 10px;
     border-radius: 5px;
     border: 1px solid #ccc;
     box-sizing: border-box;
-  }
-  input[type="submit"] {
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background for input fields */
+    backdrop-filter: blur(3px); /* Apply backdrop blur for input fields */
+}
+
+input[type="submit"] {
     background-color: #4CAF50;
     color: white;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-  }
-  input[type="submit"]:hover {
+    transition: background-color 0.3s ease; /* Add transition for background color change */
+}
+
+input[type="submit"]:hover {
     background-color: #45a049;
-  }
+}
+
 </style>
 </head>
 <body>
@@ -139,3 +156,6 @@ displayPrediction({{ results }});
 
 </body>
 </html>
+
+
+
