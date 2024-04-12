@@ -4,13 +4,42 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Simple Website</title>
+    <!-- Styles -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:500,700&display=swap&subset=latin-ext"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600&display=swap&subset=latin-ext"
+      rel="stylesheet"
+    />
+    <link
+      href="{{url_for('static', filename='css/styles.css')}}"
+      rel="stylesheet"
+    />
+    <link
+      href="{{url_for('static', filename='css/fontawesome-all.css')}}"
+      rel="stylesheet"
+    />
+    <link
+      href="{{url_for('static', filename='css/swiper.css')}}"
+      rel="stylesheet"
+    />
+    <link
+      href="{{url_for('static', filename='css/magnific-popup.css')}}"
+      rel="stylesheet"
+    />
+    <link
+      href="{{url_for('static', filename='css/bootstrap.css')}}"
+      rel="stylesheet"
+    />
     <style>
       body {
         font-family: "Poppins";
         margin: 0;
         padding: 0;
-        background-color: #7b4e2a; 
-       /* background-image: url("static/images/bg.jpeg"); */ 
+        background-color: #7b4e2a;
+        /* background-image: url("static/images/bg.jpeg"); */
         background-size: cover;
         background-position: center;
       }
@@ -136,6 +165,26 @@
         list-style: outside none none;
         text-decoration: none;
       }
+
+
+      .btn {
+        background-color: #54738c; /* Primary color */
+        margin-top: 20px;
+        color: #dcb99d; /* Text color */
+        padding: 10px 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        width: 100%;
+        font-family: "Poppins", Arial, sans-serif;
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      .btn:hover {
+        background-color: #244b6a; /* Background color */
+      }
     </style>
   </head>
   <body>
@@ -153,5 +202,52 @@
         </div>
       </div>
     </div>
+
+    <!-- Header -->
+    <header id="header" class="header">
+      <div class="header-content">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="text-container">
+                <h1>
+                  Loan Data
+                  <span id="js-rotating">
+                    Analysis, Prediction, Visualization</span
+                  >
+                </h1>
+                <p class="p-heading p-large"></p>
+                <a class="btn-solid-lg page-scroll" href="/approval">Check Eligibility</a>
+                <!-- <a class="btn-solid-lg page-scroll" href="#Visualize">Visualize Data</a> -->
+              </div>
+            </div>
+            <!-- end of col -->
+          </div>
+          <!-- end of row -->
+        </div>
+        <!-- end of container -->
+      </div>
+      <!-- end of header-content -->
+    </header>
+    <!-- end of header -->
+
+    <script src="{{url_for('static', filename='js/jquery.min.js')}}"></script>
+    <!-- jQuery for Bootstrap's JavaScript plugins -->
+    <script src="{{url_for('static', filename='js/popper.min.js')}}"></script>
+    <!-- jQuery for Bootstrap's JavaScript plugins -->
+    <script src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+    <!-- jQuery for Bootstrap's JavaScript plugins -->
+    <script src="{{url_for('static', filename='js/jquery.easing.min.js')}}"></script>
+    <!-- jQuery for Bootstrap's JavaScript plugins -->
+    <script src="{{url_for('static', filename='js/jquery.magnific-popup.js')}}"></script>
+    <!-- jQuery for Bootstrap's JavaScript plugins -->
+    <script src="{{url_for('static', filename='js/morphext.min.js')}}"></script>
+    <!-- jQuery for Bootstrap's JavaScript plugins -->
+    <script src="{{url_for('static', filename='js/isotope.pkgd.min.js')}}"></script>
+    <!-- jQuery for Bootstrap's JavaScript plugins -->
+    <script src="{{url_for('static', filename='js/validator.min.js')}}"></script>
+    <!-- jQuery for Bootstrap's JavaScript plugins -->
+    <script src="{{url_for('static', filename='js/scripts.js')}}"></script>
+    <!-- jQuery for Bootstrap's JavaScript plugins -->
   </body>
 </html>
