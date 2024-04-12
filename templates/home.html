@@ -1,298 +1,661 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Loan Application Form</title>
-<link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
-<style>
-  body {
-    font-family: 'Poppins';
-    margin: 0;
-    padding: 0;
-    background-color: rgba(124, 122, 236, 1);
-    background-size: cover;
-    background-position: center;
-  }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Loan Application Form</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Poppins";
+        margin: 0;
+        padding: 0;
+        background-color: #7b4e2a; /* Background color */
+        /* background-image: url("static/images/bg.jpeg"); */ 
+        background-size: cover;
+        background-position: center;
+      }
 
-  .tital{
-    background-color: rgba(124, 122, 236, 1);
-    padding: 5px; 
-    border-radius: 8px; 
-    text-align: center; 
-    color: #FFFFFF;
-    text-size: 20px;
-    margin-bottom:20px;
-    transition: background-image 0.3s ease;
+      .tital {
+        background-color: #54738c; /* Primary color */
+        padding: 5px;
+        border-radius: 8px;
+        text-align: center;
+        color: #dcb99d; /* Text color */
+        text-size: 20px;
+        margin-bottom: 20px;
+        transition: background-image 0.3s ease;
+      }
 
-  }
+      .form-container {
+        background-color: #2a577b; /* Secondary background color */
+        backdrop-filter: blur(5px);
+        border-radius: 8px;
+        padding: 20px;
+        max-width: 600px;
+        margin: 150px auto;
+        transition: all 0.3s ease;
+        font-family: "Poppins";
+      }
 
-  .tital:hover {
-    background-image: url("https://raw.githubusercontent.com/AryaPatel2110/ml_project/main/templates/bg.jpeg");
-    padding: 5px; 
-    border-radius: 8px; 
-    text-align: center; 
-    color: #FFFFFF;
-    text-size: 20px
-    margin-bottom:20px
-  }
+      .report-container {
+        background-color: #2a577b;
+        backdrop-filter: blur(5px);
+        border-radius: 8px;
+        padding: 20px;
+        max-width: 600px;
+        margin: 80px auto;
+        transition: all 0.3s ease;
+        font-family: "Poppins";
+        position: relative;
+        color: #dcb99d;
+      }
 
-  .form-container {
-    background-color: rgba(255, 255, 255, 1);
-    backdrop-filter: blur(5px);
-    border-radius: 8px;
-    padding: 20px;
-    max-width: 600px;
-    margin: 100px auto;
-    transition: all 0.3s ease;
-    font-family: 'Poppins';
-  }
+      form {
+        margin: 0;
+      }
 
-  .report-container {
-    background-color: rgba(255, 255, 255, 1);
-    backdrop-filter: blur(5px);
-    border-radius: 8px;
-    padding: 20px;
-    max-width: 600px;
-    margin: 100px auto;
-    transition: all 0.3s ease;
-    font-family: 'Poppins';
-    position: relative;
-  }
+      label {
+        display: block;
+        margin-bottom: 5px;
+        color: #dcb99d; /* Text color */
+        font-family: "Poppins", Arial, sans-serif;
+        font-size: 14px;
+      }
 
-  .report-container.default {
-    background-color: #ffcccc; /* Light red */
-  }
+      input[type="number"],
+      select {
+        padding: 8px;
+        margin-bottom: 10px;
+        border-radius: 8px;
+        border: 1px solid #dcb99d; /* Text color */
+        box-sizing: border-box;
+        background-color: #2a577b; /* Background color */
+        backdrop-filter: blur(3px);
+        width: 100%;
+        font-family: "Poppins", Arial, sans-serif;
+        font-size: 12px;
+        color: #dcb99d;
+      }
 
-  .report-container.non-default {
-    background-color: #ccffcc; /* Light green */
-  }
+      input[type="text"],
+      select {
+        padding: 8px;
+        margin-bottom: 10px;
+        border-radius: 8px;
+        border: 1px solid #dcb99d; /* Text color */
+        box-sizing: border-box;
+        background-color: #2a577b; /* Background color */
+        backdrop-filter: blur(3px);
+        width: 100%;
+        font-family: "Poppins", Arial, sans-serif;
+        font-size: 12px;
+        color: #dcb99d;
+      }
 
-  .form-container:hover, .report-container:hover {
-    transform: scale(1.1);
-  }
+      input[type="text"]:focus,
+      select:focus {
+        background-color: #244b6a;
+        border-radius: 4px;
+        border: 1px solid #dcb99d;
+      }
 
-  form {
-    margin: 0;
-  }
+      input[type="number"]:focus,
+      select:focus {
+        background-color: #244b6a;
+        border-radius: 4px;
+        border: 1px solid #dcb99d;
+      }
 
-  label {
-    display: block;
-    margin-bottom: 5px;
-    color: #333;
-    font-family: 'Poppins', Arial, sans-serif;
-    font-size: 12px;
-  }
+      input[type="text"]:not(:placeholder-shown),
+      select:not(:placeholder-shown) {
+        background-color: #244b6a;
+        border-radius: 4px;
+        border: 1px solid #dcb99d;
+      }
 
-  input[type="number"],
-  input[type="text"],
-  select {
-    padding: 8px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-    background-color: rgba(255, 255, 255, 1);
-    backdrop-filter: blur(3px);
-    width: 100%;
-    font-family: 'Poppins', Arial, sans-serif;
-    font-size: 12px;
-  }
+      input[type="number"]:not(:placeholder-shown),
+      select:not(:placeholder-shown) {
+        background-color: #244b6a;
+        border-radius: 4px;
+        border: 1px solid #dcb99d;
+      }
 
-  input[type="submit"] {
-    background-color: rgba(124, 122, 236, 1);
-    margin-top: 20px;
-    color: white;
-    padding: 10px 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    width: 100%;
-    font-family: 'Poppins', Arial, sans-serif;
-    font-size: 18px;
-    font-weight: bold;
-  }
+      input[type="submit"] {
+        background-color: #54738c; /* Primary color */
+        margin-top: 20px;
+        color: #dcb99d; /* Text color */
+        padding: 10px 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        width: 100%;
+        font-family: "Poppins", Arial, sans-serif;
+        font-size: 18px;
+        font-weight: bold;
+      }
 
-  input[type="submit"]:hover {
-    background-color: #721fff;
-  }
-</style>
-</head>
-<body>
+      input[type="submit"]:hover {
+        background-color: #244b6a; /* Background color */
+      }
 
+      /* Custom styles */
+      .form-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px; /* Adjust spacing between rows as needed */
+      }
 
-<div class="form-container">
-  
-  <div class="tital">
-    <h2 style="text-align: center;">Credit Risk Evaluator</h2> 
-  </div>
-  <form id="loan_application_form">
+      .form-group {
+        flex: 0 0 48%; /* Adjust width of each form field */
+      }
 
-    <label for="app_name">Applicant's Name* :</label>
-    <input type="text" id="app_name" name="app_name" required>
+      .form-group label {
+        display: block;
+        margin-bottom: 5px;
+      }
 
-    <label for="coapp_name">Co-Applicant's Name :</label>
-    <input type="text" id="coapp_name" name="coapp_name">
+      .form-group input,
+      .form-group select {
+        width: 100%;
+        padding: 8px;
 
-    <label for="person_age">Co/Applicant Age* :</label>
-    <input type="number" id="person_age" name="person_age" required>
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
 
-    <label for="person_income">Co/Applicant's Annual Income* :</label>
-    <input type="number" id="person_income" name="person_income" required>
+      /* Custom styles */
+      .HEADER-nt9pba0bx8 {
+        box-sizing: border-box;
+        font-family: Poppins, sans-serif;
+        font-size: 16px;
+        flex: 0 0 auto;
+        background: none 0% 0% / auto repeat scroll padding-box border-box
+          rgb(255, 255, 255);
+        color: rgba(0, 0, 0, 0.88);
+        height: 80px;
+        line-height: 64px;
+        padding-inline: 50px; /* Adjust as needed */
+        border-radius: 0px 0px 50px 50px;
+        display: flex;
+        justify-content: space-between;
+        margin-left: 20px;
+        position: fixed;
+        top: 0px;
+        width: 1223.33px;
+        z-index: 9;
+      }
 
-    <label for="person_home_ownership">Co/Applicant's Home Ownership* :</label>
-    <select id="person_home_ownership" name="person_home_ownership" required>
-      <option value="RENT">RENT</option>
-      <option value="OWN">OWN</option>
-      <option value="MORTGAGE">MORTGAGE</option>
-      <option value="OTHER">OTHER</option>
-    </select>
+      .DIV-sai41n26am {
+        box-sizing: border-box;
+        font-family: Poppins, sans-serif;
+        font-size: 16px;
+        display: block;
+        position: relative;
+        width: 124.49px;
+        color: rgba(0, 0, 0, 0.88);
+        line-height: 64px;
+        background: none 0% 0% / auto repeat scroll padding-box border-box
+          rgb(255, 255, 255);
+      }
 
-    <label for="person_emp_length">Co/Applicant's Employment length (in years)* :</label>
-    <input type="number" id="person_emp_length" name="person_emp_length" step="0.1" required>
+      .DIV-pbbffd2ezh {
+        box-sizing: border-box;
+        width: 998.844px;
+        font-family: Poppins, sans-serif;
+        font-size: 16px;
+        color: rgba(0, 0, 0, 0.88);
+        line-height: 64px;
+        background: none 0% 0% / auto repeat scroll padding-box border-box
+          rgb(255, 255, 255);
+      }
 
-    <label for="loan_intent">Loan Intent* :</label>
-    <select id="loan_intent" name="loan_intent" required>
-      <option value="PERSONAL">PERSONAL</option>
-      <option value="EDUCATION">EDUCATION</option>
-      <option value="MEDICAL">MEDICAL</option>
-      <option value="VENTURE">VENTURE</option>
-      <option value="HOMEIMPROVEMENT">HOMEIMPROVEMENT</option>
-    </select>
+      .UL-48kbi07131 {
+        box-sizing: border-box;
+        line-height: 64px;
+        font-family: Poppins, sans-serif;
+        font-size: 16px;
+        color: rgba(0, 0, 0, 0.88);
+        list-style: outside none none;
+        outline: rgba(0, 0, 0, 0.88) none 0px;
+        padding-inline-start: 0px;
+        transition: width 0.3s cubic-bezier(0.2, 0, 0, 1) 0s;
+        display: flex;
+        background: none 0% 0% / auto repeat scroll padding-box border-box
+          rgb(255, 255, 255);
+        margin-top: 10px; /* Adjust margin-top as needed */
+        margin-bottom: 10px; /* Adjust margin-bottom as needed */
+      }
 
-    <label for="loan_amnt">Loan Amount* :</label>
-    <input type="number" id="loan_amnt" name="loan_amnt" required onchange="calculateLoanPercentage()">
+      .LI-749rd2fdrz {
+        box-sizing: border-box;
+        flex: 0 0 auto;
+        border-radius: 0px;
+        cursor: pointer;
+        display: block;
+        margin: -1px 0px 0px;
+        position: relative;
+        white-space: nowrap;
+        transition: border-color 0.3s ease 0s, background 0.3s ease 0s;
+        padding-inline: 16px;
+        vertical-align: bottom;
+        background: none 0% 0% / auto repeat scroll padding-box border-box
+          rgba(0, 0, 0, 0);
+        color: rgb(114, 31, 255);
+        top: 1px;
+        opacity: 1;
+        order: 0;
+        line-height: 64px;
+        font-family: Poppins, sans-serif;
+        font-size: 16px;
+        list-style: outside none none;
+      }
 
-    <label for="loan_tenure">Loan Tenure :</label>
-    <input type="number" id="loan_tenure" name="loan_tenure" >
+      .SPAN-f582iyn5ih {
+        box-sizing: border-box;
+        transition: color 0.3s ease 0s;
+        color: #244b6a;
+        display: inline-block;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 27.2px;
+        text-decoration: none;
+        cursor: pointer;
+        white-space: nowrap;
+        font-family: Poppins, sans-serif;
+        list-style: outside none none;
+      }
 
-    <label for="loan_percent_income">Loan as Percent of Income* :</label>
-    <input type="number" id="loan_percent_income" name="loan_percent_income" readonly>
+      .SPAN-f582iyn5ih:hover {
+        box-sizing: border-box;
+        transition: color 0.3s ease 0s;
+        color: #dcb99d;
+        display: inline-block;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 27.2px;
+        padding: 10px 22px;
+        background: none 0% 0% / auto repeat scroll padding-box border-box
+          #244b6a;
+        border-radius: 50px;
+        box-shadow: rgba(0, 0, 0, 0.098) 0px 5px 6px 0px;
+        cursor: pointer;
+        white-space: nowrap;
+        font-family: Poppins, sans-serif;
+        list-style: outside none none;
+        text-decoration: none;
+      }
 
-    <label for="loan_int_rate">Loan Interest Rate* :</label>
-    <input type="number" id="loan_int_rate" name="loan_int_rate" step="0.01" required>
+      .LI-custom {
+        box-sizing: border-box;
+        transition: color 0.3s ease 0s;
+        color: #dcb99d;
+        display: inline-block;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 27.2px;
+        padding: 10px 22px;
+        background: none 0% 0% / auto repeat scroll padding-box border-box
+          #244b6a;
+        border-radius: 50px;
+        box-shadow: rgba(0, 0, 0, 0.098) 0px 5px 6px 0px;
+        cursor: pointer;
+        white-space: nowrap;
+        font-family: Poppins, sans-serif;
+        list-style: outside none none;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="HEADER-nt9pba0bx8">
+      <div class="DIV-sai41n26am">
+        <div class="DIV-pbbffd2ezh">
+          <ul class="UL-48kbi07131">
+            <li class="LI-749rd2fdrz">
+              <a href="/" class="SPAN-f582iyn5ih">Home</a>
+            </li>
+            <li class="LI-749rd2fdrz">
+              <a href="/predictions" class="LI-custom">Credit Risk</a>
+            </li>
+            <li class="LI-749rd2fdrz">
+              <a href="/approval" class="SPAN-f582iyn5ih">Eligibility</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
 
-    <label for="loan_grade">Loan Grade* :</label>
-    <input type="text" id="loan_grade" name="loan_grade" readonly>
-     
+    <div class="form-container">
+      <div class="tital">
+        <h2 style="text-align: center; color: #dcb99d">
+          Credit Risk Evaluator
+        </h2>
+      </div>
+      <form id="loan_application_form">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="app_name">Applicant's Name* :</label>
+            <input type="text" id="app_name" name="app_name" required />
+          </div>
+          <div class="form-group">
+            <label for="coapp_name">Co-Applicant's Name :</label>
+            <input type="text" id="coapp_name" name="coapp_name" />
+          </div>
+        </div>
 
-    <label for="cb_person_default_on_file">Default on File (Yes/No)* :</label>
-    <select id="cb_person_default_on_file" name="cb_person_default_on_file" required>
-      <option value="Y">Yes</option>
-      <option value="N">No</option>
-    </select>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="person_age">Co/Applicant Age* :</label>
+            <input type="number" id="person_age" name="person_age" required />
+          </div>
+          <div class="form-group">
+            <label for="person_income">Co/Applicant's Annual Income* :</label>
+            <input
+              type="number"
+              id="person_income"
+              name="person_income"
+              required
+            />
+          </div>
+        </div>
 
-    <label for="cb_person_cred_hist_length">Credit History Length* :</label>
-    <input type="number" id="cb_person_cred_hist_length" name="cb_person_cred_hist_length" required>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="person_home_ownership"
+              >Co/Applicant's Home Ownership* :</label
+            >
+            <select
+              id="person_home_ownership"
+              name="person_home_ownership"
+              required
+            >
+              <option value="RENT">RENT</option>
+              <option value="OWN">OWN</option>
+              <option value="MORTGAGE">MORTGAGE</option>
+              <option value="OTHER">OTHER</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="person_emp_length"
+              >Co/Applicant's Employment length (in years)* :</label
+            >
+            <input
+              type="number"
+              id="person_emp_length"
+              name="person_emp_length"
+              step="0.1"
+              required
+            />
+          </div>
+        </div>
 
-    <input type="submit" value="Submit">
-  </form>
-</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="loan_intent">Loan Intent* :</label>
+            <select id="loan_intent" name="loan_intent" required>
+              <option value="PERSONAL">PERSONAL</option>
+              <option value="EDUCATION">EDUCATION</option>
+              <option value="MEDICAL">MEDICAL</option>
+              <option value="VENTURE">VENTURE</option>
+              <option value="HOMEIMPROVEMENT">HOMEIMPROVEMENT</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="loan_amnt">Loan Amount* :</label>
+            <input
+              type="number"
+              id="loan_amnt"
+              name="loan_amnt"
+              required
+              onchange="calculateLoanPercentage()"
+            />
+          </div>
+        </div>
 
-<div class="report-container" id="report-container" style="display: none;">
-  <div class="tital">
-  <h2 style="text-align: center;">Profile</h2>
-  </div>
-  <ul>
-    <li><strong>Applicant's Name:</strong> <span id="report-applicant-name"></span></li>
-    <li><strong>Co-Applicant's Name:</strong> <span id="report-coapplicant-name"></span></li>
-    <li><strong>Co/Applicant Age:</strong> <span id="report-age"></span></li>
-    <li><strong>Co/Applicant's Annual Income:</strong> <span id="report-income"></span></li>
-    <li><strong>Co/Applicant's Home Ownership:</strong> <span id="report-home-ownership"></span></li>
-    <li><strong>Co/Applicant's Employment length (in years):</strong> <span id="report-employment-length"></span></li>
-    <li><strong>Loan Intent:</strong> <span id="report-loan-intent"></span></li>
-    <li><strong>Loan Amount:</strong> <span id="report-loan-amount"></span></li>
-    <li><strong>Loan as Percent of Income:</strong> <span id="report-loan-percent-income"></span></li>
-    <li><strong>Loan Interest Rate:</strong> <span id="report-loan-interest-rate"></span></li>
-    <li><strong>Loan Grade:</strong> <span id="report-loan-grade"></span></li>
-    <li><strong>Default on File:</strong> <span id="report-default-on-file"></span></li>
-    <li><strong>Credit History Length:</strong> <span id="report-credit-history-length"></span></li>
-  </ul>
-  <div id="prediction-indicator" style="padding: 10px; border-radius: 8px; text-align: center; color: #FFFFFF;text-size: 20px">
-    <strong><span id="report-prediction" class="prediction"></span></strong>
-  </div>
-</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="loan_tenure">Loan Tenure :</label>
+            <input type="number" id="loan_tenure" name="loan_tenure" />
+          </div>
+          <div class="form-group">
+            <label for="loan_percent_income"
+              >Loan as Percent of Income* :</label
+            >
+            <input
+              type="number"
+              id="loan_percent_income"
+              name="loan_percent_income"
+              readonly
+            />
+          </div>
+        </div>
 
-<script>
-  function autoSelectLoanGrade() {
-    var loanIntRate = parseFloat(document.getElementById("loan_int_rate").value);
-    var loanGrade = document.getElementById("loan_grade");
-  
-    if (loanIntRate <= 10.5) {
-      loanGrade.value = "A";
-    } else if (loanIntRate <= 12.6) {
-      loanGrade.value = "B";
-    } else if (loanIntRate <= 16.11) {
-      loanGrade.value = "C";
-    } else if (loanIntRate <= 18.5) {
-      loanGrade.value = "D";
-    } else if (loanIntRate <= 20.5) {
-      loanGrade.value = "E";
-    } else if (loanIntRate <= 22.1) {
-      loanGrade.value = "F";
-    } else {
-      loanGrade.value = "G";
-    }
-  }
-  
-  // Call the function when the loan_int_rate input changes
-  document.getElementById("loan_int_rate").addEventListener("change", autoSelectLoanGrade);
+        <div class="form-row">
+          <div class="form-group">
+            <label for="loan_int_rate">Loan Interest Rate* :</label>
+            <input
+              type="number"
+              id="loan_int_rate"
+              name="loan_int_rate"
+              step="0.01"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="loan_grade">Loan Grade* :</label>
+            <input type="text" id="loan_grade" name="loan_grade" readonly />
+          </div>
+        </div>
 
-  
-  function calculateLoanPercentage() {
-    var loanAmount = parseFloat(document.getElementById("loan_amnt").value);
-    var personIncome = parseFloat(document.getElementById("person_income").value);
-    var loanPercentIncome = (loanAmount / personIncome);
-    document.getElementById("loan_percent_income").value = loanPercentIncome.toFixed(2);
-}
+        <div class="form-row">
+          <div class="form-group">
+            <label for="cb_person_default_on_file"
+              >Default on File (Yes/No)* :</label
+            >
+            <select
+              id="cb_person_default_on_file"
+              name="cb_person_default_on_file"
+              required
+            >
+              <option value="Y">Yes</option>
+              <option value="N">No</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="cb_person_cred_hist_length"
+              >Credit History Length* :</label
+            >
+            <input
+              type="number"
+              id="cb_person_cred_hist_length"
+              name="cb_person_cred_hist_length"
+              required
+            />
+          </div>
+        </div>
 
-function displayPrediction(results) {
-  var predictionText = results === 1.0 ? "RISK" : "SAFE";
-  var reportPrediction = document.getElementById("report-prediction");
-  var predictionIndicator = document.getElementById("prediction-indicator");
+        <input type="submit" value="Submit" />
+      </form>
+    </div>
 
-  
-  // Populate report with input values
-  document.getElementById("report-applicant-name").innerText = document.getElementById("app_name").value;
-  document.getElementById("report-coapplicant-name").innerText = document.getElementById("coapp_name").value;
-  document.getElementById("report-age").innerText = document.getElementById("person_age").value;
-  document.getElementById("report-income").innerText = document.getElementById("person_income").value;
-  document.getElementById("report-home-ownership").innerText = document.getElementById("person_home_ownership").value;
-  document.getElementById("report-employment-length").innerText = document.getElementById("person_emp_length").value;
-  document.getElementById("report-loan-intent").innerText = document.getElementById("loan_intent").value;
-  document.getElementById("report-loan-amount").innerText = document.getElementById("loan_amnt").value;
-  document.getElementById("report-loan-percent-income").innerText = document.getElementById("loan_percent_income").value;
-  document.getElementById("report-loan-interest-rate").innerText = document.getElementById("loan_int_rate").value;
-  document.getElementById("report-loan-grade").innerText = document.getElementById("loan_grade").value;
-  document.getElementById("report-default-on-file").innerText = document.getElementById("cb_person_default_on_file").value;
-  document.getElementById("report-credit-history-length").innerText = document.getElementById("cb_person_cred_hist_length").value;
-  
-  // Display prediction result
-  reportPrediction.innerText = predictionText;
-  reportPrediction.classList.add(predictionText.toLowerCase().replace(/\s/g, '-'));
-  
-  // Display the report container
-  document.getElementById("report-container").style.display = "block";
+    <div class="report-container" id="report-container" style="display: none">
+      <div class="tital">
+        <h2 style="text-align: center">Profile</h2>
+      </div>
+      <ul>
+        <li>
+          Applicant's Name:
+          <span id="report-applicant-name"></span>
+        </li>
+        <li>
+          Co-Applicant's Name:
+          <span id="report-coapplicant-name"></span>
+        </li>
+        <li>
+          Co/Applicant Age: <span id="report-age"></span>
+        </li>
+        <li>
+          Co/Applicant's Annual Income:
+          <span id="report-income"></span>
+        </li>
+        <li>
+          Co/Applicant's Home Ownership:
+          <span id="report-home-ownership"></span>
+        </li>
+        <li>
+          Co/Applicant's Employment length (in years):</strong>
+          <span id="report-employment-length"></span>
+        </li>
+        <li>
+          Loan Intent: <span id="report-loan-intent"></span>
+        </li>
+        <li>
+          Loan Amount: <span id="report-loan-amount"></span>
+        </li>
+        <li>
+          Loan as Percent of Income:
+          <span id="report-loan-percent-income"></span>
+        </li>
+        <li>
+          Loan Interest Rate:
+          <span id="report-loan-interest-rate"></span>
+        </li>
+        <li>
+          Loan Grade: <span id="report-loan-grade"></span>
+        </li>
+        <li>
+          Default on File:
+          <span id="report-default-on-file"></span>
+        </li>
+        <li>
+          Credit History Length:
+          <span id="report-credit-history-length"></span>
+        </li>
+      </ul>
+      <div
+        id="prediction-indicator"
+        style="
+          padding: 10px;
+          border-radius: 8px;
+          text-align: center;
+          color: #ffffff;
+          text-size: 20px;
+        "
+      >
+        <strong><span id="report-prediction" class="prediction"></span></strong>
+      </div>
+    </div>
 
-   // Change background color based on prediction
-   predictionIndicator.style.backgroundColor = results === 0 ? "#77DD77" : "#FF6961";
+    <script>
+      function autoSelectLoanGrade() {
+        var loanIntRate = parseFloat(
+          document.getElementById("loan_int_rate").value
+        );
+        var loanGrade = document.getElementById("loan_grade");
 
-  // Move focus to the report container
-  document.getElementById("report-container").scrollIntoView({ behavior: "smooth" });
-}
+        if (loanIntRate <= 10.5) {
+          loanGrade.value = "A";
+        } else if (loanIntRate <= 12.6) {
+          loanGrade.value = "B";
+        } else if (loanIntRate <= 16.11) {
+          loanGrade.value = "C";
+        } else if (loanIntRate <= 18.5) {
+          loanGrade.value = "D";
+        } else if (loanIntRate <= 20.5) {
+          loanGrade.value = "E";
+        } else if (loanIntRate <= 22.1) {
+          loanGrade.value = "F";
+        } else {
+          loanGrade.value = "G";
+        }
+      }
 
-document.getElementById("loan_application_form").addEventListener("submit", function(event) {
-  // Prevent the default form submission behavior
-  event.preventDefault();
+      // Call the function when the loan_int_rate input changes
+      document
+        .getElementById("loan_int_rate")
+        .addEventListener("change", autoSelectLoanGrade);
 
-  // Simulate prediction results (Replace this with your actual prediction logic)
-  var results = Math.random() >= 0.5 ? 1.0 : 0.0;
+      function calculateLoanPercentage() {
+        var loanAmount = parseFloat(document.getElementById("loan_amnt").value);
+        var personIncome = parseFloat(
+          document.getElementById("person_income").value
+        );
+        var loanPercentIncome = loanAmount / personIncome;
+        document.getElementById("loan_percent_income").value =
+          loanPercentIncome.toFixed(2);
+      }
 
-  // Display prediction
-  displayPrediction(results);
-});
-</script>
+      function displayPrediction(results) {
+        var predictionText = results === 1.0 ? "RISK" : "SAFE";
+        var reportPrediction = document.getElementById("report-prediction");
+        var predictionIndicator = document.getElementById(
+          "prediction-indicator"
+        );
 
-</body>
+        // Populate report with input values
+        document.getElementById("report-applicant-name").innerText =
+          document.getElementById("app_name").value;
+        document.getElementById("report-coapplicant-name").innerText =
+          document.getElementById("coapp_name").value;
+        document.getElementById("report-age").innerText =
+          document.getElementById("person_age").value;
+        document.getElementById("report-income").innerText =
+          document.getElementById("person_income").value;
+        document.getElementById("report-home-ownership").innerText =
+          document.getElementById("person_home_ownership").value;
+        document.getElementById("report-employment-length").innerText =
+          document.getElementById("person_emp_length").value;
+        document.getElementById("report-loan-intent").innerText =
+          document.getElementById("loan_intent").value;
+        document.getElementById("report-loan-amount").innerText =
+          document.getElementById("loan_amnt").value;
+        document.getElementById("report-loan-percent-income").innerText =
+          document.getElementById("loan_percent_income").value;
+        document.getElementById("report-loan-interest-rate").innerText =
+          document.getElementById("loan_int_rate").value;
+        document.getElementById("report-loan-grade").innerText =
+          document.getElementById("loan_grade").value;
+        document.getElementById("report-default-on-file").innerText =
+          document.getElementById("cb_person_default_on_file").value;
+        document.getElementById("report-credit-history-length").innerText =
+          document.getElementById("cb_person_cred_hist_length").value;
+
+        // Display prediction result
+        reportPrediction.innerText = predictionText;
+        reportPrediction.classList.add(
+          predictionText.toLowerCase().replace(/\s/g, "-")
+        );
+
+        // Display the report container
+        document.getElementById("report-container").style.display = "block";
+
+        // Change background color based on prediction
+        predictionIndicator.style.backgroundColor =
+          results === 0 ? "#77DD77" : "#FF6961";
+
+        // Move focus to the report container
+        document
+          .getElementById("report-container")
+          .scrollIntoView({ behavior: "smooth" });
+      }
+
+      document
+        .getElementById("loan_application_form")
+        .addEventListener("submit", function (event) {
+          // Prevent the default form submission behavior
+          event.preventDefault();
+
+          // Simulate prediction results (Replace this with your actual prediction logic)
+          var results = Math.random() >= 0.5 ? 1.0 : 0.0;
+
+          // Display prediction
+          displayPrediction(results);
+        });
+    </script>
+  </body>
 </html>

@@ -42,7 +42,7 @@ def predict_datapoint():
         return render_template('home.html', results = results[0])
     
 
-@app.route('/Approval',methods=['GET','POST'])
+@app.route('/approval',methods=['GET','POST'])
 def approval_predict_datapoint():
     if request.method=='GET':
         return render_template('approval.html')

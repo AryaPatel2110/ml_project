@@ -1,269 +1,612 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Loan Application Form</title>
-<link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
-<style>
-  body {
-    font-family: 'Poppins';
-    margin: 0;
-    padding: 0;
-    background-color: rgba(124, 122, 236, 1);
-    background-size: cover;
-    background-position: center;
-  }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Loan Application Form</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Poppins";
+        margin: 0;
+        padding: 0;
+        background-color: #7b4e2a; /* Background color */
+        /* background-image: url("static/images/bg.jpeg"); */
+        background-size: cover;
+        background-position: center;
+      }
 
-  .tital{
-    background-color: rgba(124, 122, 236, 1);
-    padding: 5px; 
-    border-radius: 8px; 
-    text-align: center; 
-    color: #FFFFFF;
-    text-size: 20px;
-    margin-bottom:20px;
-    transition: background-image 0.3s ease;
+      .tital {
+        background-color: #54738c; /* Primary color */
+        padding: 5px;
+        border-radius: 8px;
+        text-align: center;
+        color: #dcb99d; /* Text color */
+        text-size: 20px;
+        margin-bottom: 20px;
+        transition: background-image 0.3s ease;
+      }
 
-  }
+      .form-container {
+        background-color: #2a577b; /* Secondary background color */
+        backdrop-filter: blur(5px);
+        border-radius: 8px;
+        padding: 20px;
+        max-width: 600px;
+        margin: 150px auto;
+        transition: all 0.3s ease;
+        font-family: "Poppins";
+      }
 
-  .tital:hover {
-    background-image: url("https://raw.githubusercontent.com/AryaPatel2110/ml_project/main/templates/bg.jpeg");
-    padding: 5px; 
-    border-radius: 8px; 
-    text-align: center; 
-    color: #FFFFFF;
-    text-size: 20px
-    margin-bottom:20px
-  }
+      .report-container {
+        background-color: #2a577b;
+        backdrop-filter: blur(5px);
+        border-radius: 8px;
+        padding: 20px;
+        max-width: 600px;
+        margin: 80px auto;
+        transition: all 0.3s ease;
+        font-family: "Poppins";
+        position: relative;
+        color: #dcb99d;
+      }
 
-  .form-container {
-    background-color: rgba(255, 255, 255, 1);
-    backdrop-filter: blur(5px);
-    border-radius: 8px;
-    padding: 20px;
-    max-width: 600px;
-    margin: 100px auto;
-    transition: all 0.3s ease;
-    font-family: 'Poppins';
-  }
+      form {
+        margin: 0;
+      }
 
-  .report-container {
-    background-color: rgba(255, 255, 255, 1);
-    backdrop-filter: blur(5px);
-    border-radius: 8px;
-    padding: 20px;
-    max-width: 600px;
-    margin: 100px auto;
-    transition: all 0.3s ease;
-    font-family: 'Poppins';
-    position: relative;
-  }
+      label {
+        display: block;
+        margin-bottom: 5px;
+        color: #dcb99d; /* Text color */
+        font-family: "Poppins", Arial, sans-serif;
+        font-size: 14px;
+      }
 
-  .report-container.default {
-    background-color: #ffcccc; /* Light red */
-  }
+      input[type="number"],
+      select {
+        padding: 8px;
+        margin-bottom: 10px;
+        border-radius: 8px;
+        border: 1px solid #dcb99d; /* Text color */
+        box-sizing: border-box;
+        background-color: #2a577b; /* Background color */
+        backdrop-filter: blur(3px);
+        width: 100%;
+        font-family: "Poppins", Arial, sans-serif;
+        font-size: 12px;
+        color: #dcb99d;
+      }
 
-  .report-container.non-default {
-    background-color: #ccffcc; /* Light green */
-  }
+      input[type="text"],
+      select {
+        padding: 8px;
+        margin-bottom: 10px;
+        border-radius: 8px;
+        border: 1px solid #dcb99d; /* Text color */
+        box-sizing: border-box;
+        background-color: #2a577b; /* Background color */
+        backdrop-filter: blur(3px);
+        width: 100%;
+        font-family: "Poppins", Arial, sans-serif;
+        font-size: 12px;
+        color: #dcb99d;
+      }
 
-  .form-container:hover, .report-container:hover {
-    transform: scale(1.1);
-  }
+      input[type="text"]:focus,
+      select:focus {
+        background-color: #244b6a;
+        border-radius: 4px;
+        border: 1px solid #dcb99d;
+      }
 
-  form {
-    margin: 0;
-  }
+      input[type="number"]:focus,
+      select:focus {
+        background-color: #244b6a;
+        border-radius: 4px;
+        border: 1px solid #dcb99d;
+      }
 
-  label {
-    display: block;
-    margin-bottom: 5px;
-    color: #333;
-    font-family: 'Poppins', Arial, sans-serif;
-    font-size: 12px;
-  }
+      input[type="text"]:not(:placeholder-shown),
+      select:not(:placeholder-shown) {
+        background-color: #244b6a;
+        border-radius: 4px;
+        border: 1px solid #dcb99d;
+      }
 
-  input[type="number"],
-  input[type="text"],
-  select {
-    padding: 8px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-    background-color: rgba(255, 255, 255, 1);
-    backdrop-filter: blur(3px);
-    width: 100%;
-    font-family: 'Poppins', Arial, sans-serif;
-    font-size: 12px;
-  }
+      input[type="number"]:not(:placeholder-shown),
+      select:not(:placeholder-shown) {
+        background-color: #244b6a;
+        border-radius: 4px;
+        border: 1px solid #dcb99d;
+      }
 
-  input[type="submit"] {
-    background-color: rgba(124, 122, 236, 1);
-    margin-top: 20px;
-    color: white;
-    padding: 10px 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    width: 100%;
-    font-family: 'Poppins', Arial, sans-serif;
-    font-size: 18px;
-    font-weight: bold;
-  }
+      input[type="submit"] {
+        background-color: #54738c; /* Primary color */
+        margin-top: 20px;
+        color: #dcb99d; /* Text color */
+        padding: 10px 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        width: 100%;
+        font-family: "Poppins", Arial, sans-serif;
+        font-size: 18px;
+        font-weight: bold;
+      }
 
-  input[type="submit"]:hover {
-    background-color: #721fff;
-  }
-</style>
-</head>
-<body>
+      input[type="submit"]:hover {
+        background-color: #244b6a; /* Background color */
+      }
 
-<div class="form-container">
-  
-  <div class="tital">
-    <h2 style="text-align: center;">Loan Eligibility Form</h2> 
-  </div>
-  <form id="loan_application_form" action="{{ url_for('approval_predict_datapoint')}}" method="post">
+      /* Custom styles */
+      .form-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px; /* Adjust spacing between rows as needed */
+      }
 
-    <label for="app_name">Applicant's Name* :</label>
-    <input type="text" id="app_name" name="app_name" required>
+      .form-group {
+        flex: 0 0 48%; /* Adjust width of each form field */
+      }
 
-    <label for="coapp_name">Co-Applicant's Name :</label>
-    <input type="text" id="coapp_name" name="coapp_name">
+      .form-group label {
+        display: block;
+        margin-bottom: 5px;
+      }
 
-    <label for="no_of_dependents">Number of Dependents* :</label>
-    <input type="number" id="no_of_dependents" name="no_of_dependents" required>
+      .form-group input,
+      .form-group select {
+        width: 100%;
+        padding: 8px;
 
-    <label for="education">Education* :</label>
-    <select id="education" name="education" required>
-      <option value=1>Graduate</option>
-      <option value=0>Not Graduate</option>
-    </select>
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
 
-    <label for="self_employed">Self Employed* :</label>
-    <select id="self_employed" name="self_employed" required>
-      <option value=1>Yes</option>
-      <option value=0>No</option>
-    </select>
+      .HEADER-nt9pba0bx8 {
+        box-sizing: border-box;
+        font-family: Poppins, sans-serif;
+        font-size: 16px;
+        flex: 0 0 auto;
+        background: none 0% 0% / auto repeat scroll padding-box border-box
+          rgb(255, 255, 255);
+        color: rgba(0, 0, 0, 0.88);
+        height: 80px;
+        line-height: 64px;
+        padding-inline: 50px; /* Adjust as needed */
+        border-radius: 0px 0px 50px 50px;
+        display: flex;
+        justify-content: space-between;
+        margin-left: 20px;
+        position: fixed;
+        top: 0px;
+        width: 1223.33px;
+        z-index: 9;
+      }
 
-    <label for="income_annum">Annual Income* :</label>
-    <input type="number" id="income_annum" name="income_annum" required>
+      .DIV-sai41n26am {
+        box-sizing: border-box;
+        font-family: Poppins, sans-serif;
+        font-size: 16px;
+        display: block;
+        position: relative;
+        width: 124.49px;
+        color: rgba(0, 0, 0, 0.88);
+        line-height: 64px;
+        background: none 0% 0% / auto repeat scroll padding-box border-box
+          rgb(255, 255, 255);
+      }
 
-    <label for="loan_amount">Loan Amount* :</label>
-    <input type="number" id="loan_amount" name="loan_amount" required>
+      .DIV-pbbffd2ezh {
+        box-sizing: border-box;
+        width: 998.844px;
+        font-family: Poppins, sans-serif;
+        font-size: 16px;
+        color: rgba(0, 0, 0, 0.88);
+        line-height: 64px;
+        background: none 0% 0% / auto repeat scroll padding-box border-box
+          rgb(255, 255, 255);
+      }
 
-    <label for="loan_term">Loan Term* :</label>
-    <input type="number" id="loan_term" name="loan_term" required>
+      .UL-48kbi07131 {
+        box-sizing: border-box;
+        line-height: 64px;
+        font-family: Poppins, sans-serif;
+        font-size: 16px;
+        color: rgba(0, 0, 0, 0.88);
+        list-style: outside none none;
+        outline: rgba(0, 0, 0, 0.88) none 0px;
+        padding-inline-start: 0px;
+        transition: width 0.3s cubic-bezier(0.2, 0, 0, 1) 0s;
+        display: flex;
+        background: none 0% 0% / auto repeat scroll padding-box border-box
+          rgb(255, 255, 255);
+        margin-top: 10px; /* Adjust margin-top as needed */
+        margin-bottom: 10px; /* Adjust margin-bottom as needed */
+      }
 
-    <label for="cibil_score">CIBIL Score* :</label>
-    <input type="number" id="cibil_score" name="cibil_score" required>
+      .LI-749rd2fdrz {
+        box-sizing: border-box;
+        flex: 0 0 auto;
+        border-radius: 0px;
+        cursor: pointer;
+        display: block;
+        margin: -1px 0px 0px;
+        position: relative;
+        white-space: nowrap;
+        transition: border-color 0.3s ease 0s, background 0.3s ease 0s;
+        padding-inline: 16px;
+        vertical-align: bottom;
+        background: none 0% 0% / auto repeat scroll padding-box border-box
+          rgba(0, 0, 0, 0);
+        color: rgb(114, 31, 255);
+        top: 1px;
+        opacity: 1;
+        order: 0;
+        line-height: 64px;
+        font-family: Poppins, sans-serif;
+        font-size: 16px;
+        list-style: outside none none;
+      }
 
-    <label for="residential_assets_value">Residential Assets Value :</label>
-    <input type="number" id="residential_assets_value" name="residential_assets_value">
+      .SPAN-f582iyn5ih {
+        box-sizing: border-box;
+        transition: color 0.3s ease 0s;
+        color: #244b6a;
+        display: inline-block;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 27.2px;
+        text-decoration: none;
+        cursor: pointer;
+        white-space: nowrap;
+        font-family: Poppins, sans-serif;
+        list-style: outside none none;
+      }
 
-    <label for="commercial_assets_value">Commercial Assets Value :</label>
-    <input type="number" id="commercial_assets_value" name="commercial_assets_value">
+      .SPAN-f582iyn5ih:hover {
+        box-sizing: border-box;
+        transition: color 0.3s ease 0s;
+        color: #dcb99d;
+        display: inline-block;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 27.2px;
+        padding: 10px 22px;
+        background: none 0% 0% / auto repeat scroll padding-box border-box
+          #244b6a;
+        border-radius: 50px;
+        box-shadow: rgba(0, 0, 0, 0.098) 0px 5px 6px 0px;
+        cursor: pointer;
+        white-space: nowrap;
+        font-family: Poppins, sans-serif;
+        list-style: outside none none;
+        text-decoration: none;
+      }
 
-    <label for="luxury_assets_value">Luxury Assets Value :</label>
-    <input type="number" id="luxury_assets_value" name="luxury_assets_value">
+      .LI-custom {
+        box-sizing: border-box;
+        transition: color 0.3s ease 0s;
+        color: #dcb99d;
+        display: inline-block;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 27.2px;
+        padding: 10px 22px;
+        background: none 0% 0% / auto repeat scroll padding-box border-box
+          #244b6a;
+        border-radius: 50px;
+        box-shadow: rgba(0, 0, 0, 0.098) 0px 5px 6px 0px;
+        cursor: pointer;
+        white-space: nowrap;
+        font-family: Poppins, sans-serif;
+        list-style: outside none none;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="HEADER-nt9pba0bx8">
+      <div class="DIV-sai41n26am">
+        <div class="DIV-pbbffd2ezh">
+          <ul class="UL-48kbi07131">
+            <li class="LI-749rd2fdrz">
+              <a href="/" class="SPAN-f582iyn5ih">Home</a>
+            </li>
+            <li class="LI-749rd2fdrz">
+              <a href="/predictions" class="SPAN-f582iyn5ih">Credit Risk</a>
+            </li>
+            <li class="LI-749rd2fdrz">
+              <a href="/approval" class="LI-custom">Eligibility</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="form-container">
+      <div class="tital">
+        <h2 style="text-align: center; color: #dcb99d">
+          Loan Eligibility Form
+        </h2>
+      </div>
+      <div class="container">
+        <form
+          id="loan_application_form"
+          action="{{ url_for('approval_predict_datapoint')}}"
+          method="post"
+        >
+          <div class="form-row">
+            <div class="form-group">
+              <label for="app_name">Applicant's Name* :</label>
+              <input type="text" id="app_name" name="app_name" required />
+            </div>
+            <div class="form-group">
+              <label for="coapp_name">Co-Applicant's Name :</label>
+              <input type="text" id="coapp_name" name="coapp_name" />
+            </div>
+          </div>
 
-    <label for="bank_asset_value">Bank Asset Value :</label>
-    <input type="number" id="bank_asset_value" name="bank_asset_value">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="no_of_dependents">Number of Dependents* :</label>
+              <input
+                type="number"
+                id="no_of_dependents"
+                name="no_of_dependents"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="education">Education* :</label>
+              <select id="education" name="education" required>
+                <option value="1">Graduate</option>
+                <option value="0">Not Graduate</option>
+              </select>
+            </div>
+          </div>
 
-    <input type="submit" value="Submit">
-  </form>
-</div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="self_employed">Self Employed* :</label>
+              <select id="self_employed" name="self_employed" required>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="income_annum">Annual Income* :</label>
+              <input
+                type="number"
+                id="income_annum"
+                name="income_annum"
+                required
+              />
+            </div>
+          </div>
 
-<div class="report-container" id="report-container" style="display: none;">
-  <div class="tital">
-  <h2 style="text-align: center;">Applicant Report</h2>
-  </div>
-  <ul>
-    <li><strong>Applicant's Name:</strong> <span id="report-applicant-name"></span></li>
-    <li><strong>Co-Applicant's Name:</strong> <span id="report-coapplicant-name"></span></li>
-    <li><strong>Number of Dependents:</strong> <span id="report-no-of-dependents"></span></li>
-    <li><strong>Education:</strong> <span id="report-education"></span></li>
-    <li><strong>Self Employed:</strong> <span id="report-self-employed"></span></li>
-    <li><strong>Annual Income:</strong> <span id="report-loan-amount"></span></li>
-    <li><strong>Loan Ammount:</strong> <span id="report-income-annum"></span></li>
-    <li><strong>Loan Term:</strong> <span id="report-loan-term"></span></li>
-    <li><strong>CIBIL Score:</strong> <span id="report-cibil-score"></span></li>
-    <li><strong>Residential Assets Value:</strong> <span id="report-residential-assets-value"></span></li>
-    <li><strong>Commercial Assets Value:</strong> <span id="report-commercial-assets-value"></span></li>
-    <li><strong>Luxury Assets Value:</strong> <span id="report-luxury-assets-value"></span></li>
-    <li><strong>Bank Asset Value:</strong> <span id="report-bank-asset-value"></span></li>
-  </ul>
-  <div id="prediction-indicator" style="padding: 10px; border-radius: 8px; text-align: center; color: #FFFFFF;text-size: 20px">
-    <strong><span id="report-prediction" class="prediction"></span></strong>
-  </div>
-</div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="loan_amount">Loan Amount* :</label>
+              <input
+                type="number"
+                id="loan_amount"
+                name="loan_amount"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="loan_term">Loan Term* :</label>
+              <input type="number" id="loan_term" name="loan_term" required />
+            </div>
+          </div>
 
-<script>
-  function displayPrediction(results) {
-    var predictionText = results === 1.0 ? "Eligible" : "Not-Eligible";
-    var reportPrediction = document.getElementById("report-prediction");
-    var predictionIndicator = document.getElementById("prediction-indicator");
-  
-    // Populate report with input values
-    document.getElementById("report-applicant-name").innerText = document.getElementById("app_name").value;
-    document.getElementById("report-coapplicant-name").innerText = document.getElementById("coapp_name").value;
-    document.getElementById("report-no-of-dependents").innerText = document.getElementById("no_of_dependents").value;
-    document.getElementById("report-education").innerText = document.getElementById("education").value == 1 ? 'Graduate' : 'Non Graduate';
-    document.getElementById("report-self-employed").innerText = document.getElementById("self_employed").value == 1 ? "Yes" : "No";
-    document.getElementById("report-income-annum").innerText = document.getElementById("income_annum").value;
-    document.getElementById("report-loan-amount").innerText = document.getElementById("loan_amount").value;
-    document.getElementById("report-loan-term").innerText = document.getElementById("loan_term").value;
-    document.getElementById("report-cibil-score").innerText = document.getElementById("cibil_score").value;
-    document.getElementById("report-residential-assets-value").innerText = document.getElementById("residential_assets_value").value;
-    document.getElementById("report-commercial-assets-value").innerText = document.getElementById("commercial_assets_value").value;
-    document.getElementById("report-luxury-assets-value").innerText = document.getElementById("luxury_assets_value").value;
-    document.getElementById("report-bank-asset-value").innerText = document.getElementById("bank_asset_value").value;
-    
-    // Display prediction result
-    reportPrediction.innerText = predictionText;
-    reportPrediction.classList.add(predictionText.toLowerCase().replace(/\s/g, '-'));
-    
-    // Display the report container
-    document.getElementById("report-container").style.display = "block";
-  
-    // Change background color based on prediction
-    predictionIndicator.style.backgroundColor = results === 1 ? "#77DD77" : "#FF6961";
-  
-    // Move focus to the report container
-    document.getElementById("report-container").scrollIntoView({ behavior: "smooth" });
-  }
-  
-  document.getElementById("loan_application_form").addEventListener("submit", function(event) {
-    // Prevent the default form submission behavior
-    event.preventDefault();
-  
-    // Check if non-mandatory fields are blank and set their value to 0
-    if (document.getElementById("coapp_name").value === "") {
-      document.getElementById("coapp_name").value = "Not Applicable";
-    }
-    if (document.getElementById("residential_assets_value").value === "") {
-      document.getElementById("residential_assets_value").value = 0;
-    }
-    if (document.getElementById("commercial_assets_value").value === "") {
-      document.getElementById("commercial_assets_value").value = 0;
-    }
-    if (document.getElementById("luxury_assets_value").value === "") {
-      document.getElementById("luxury_assets_value").value = 0;
-    }
-    if (document.getElementById("bank_asset_value").value === "") {
-      document.getElementById("bank_asset_value").value = 0;
-    }
-  
-    // Simulate prediction results (Replace this with your actual prediction logic)
-    var results = Math.random() >= 0.5 ? 1.0 : 0.0;
-  
-    // Display prediction
-    displayPrediction(results);
-  });
-  </script>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="cibil_score">CIBIL Score* :</label>
+              <input
+                type="number"
+                id="cibil_score"
+                name="cibil_score"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="residential_assets_value"
+                >Residential Assets Value :</label
+              >
+              <input
+                type="number"
+                id="residential_assets_value"
+                name="residential_assets_value"
+              />
+            </div>
+          </div>
 
-</body>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="commercial_assets_value"
+                >Commercial Assets Value :</label
+              >
+              <input
+                type="number"
+                id="commercial_assets_value"
+                name="commercial_assets_value"
+              />
+            </div>
+            <div class="form-group">
+              <label for="luxury_assets_value">Luxury Assets Value :</label>
+              <input
+                type="number"
+                id="luxury_assets_value"
+                name="luxury_assets_value"
+              />
+            </div>
+          </div>
+
+          <label for="bank_asset_value">Bank Asset Value :</label>
+          <input type="number" id="bank_asset_value" name="bank_asset_value" />
+
+          <input type="submit" value="Submit" />
+        </form>
+      </div>
+    </div>
+
+    <div class="report-container" id="report-container" style="display: none">
+      <div class="tital">
+        <h2 style="text-align: center">Applicant Report</h2>
+      </div>
+      <ul>
+        <li>
+          Applicant's Name:
+          <span id="report-applicant-name"></span>
+        </li>
+        <li>
+          Co-Applicant's Name:
+          <span id="report-coapplicant-name"></span>
+        </li>
+        <li>
+          Number of Dependents:
+          <span id="report-no-of-dependents"></span>
+        </li>
+        <li>Education: <span id="report-education"></span></li>
+        <li>
+          Self Employed:
+          <span id="report-self-employed"></span>
+        </li>
+        <li>
+          Annual Income: <span id="report-loan-amount"></span>
+        </li>
+        <li>
+          Loan Ammount: <span id="report-income-annum"></span>
+        </li>
+        <li>Loan Term: <span id="report-loan-term"></span></li>
+        <li>
+          CIBIL Score: <span id="report-cibil-score"></span>
+        </li>
+        <li>
+          Residential Assets Value:
+          <span id="report-residential-assets-value"></span>
+        </li>
+        <li>
+          Commercial Assets Value:
+          <span id="report-commercial-assets-value"></span>
+        </li>
+        <li>
+          Luxury Assets Value:
+          <span id="report-luxury-assets-value"></span>
+        </li>
+        <li>
+          Bank Asset Value:
+          <span id="report-bank-asset-value"></span>
+        </li>
+      </ul>
+      <div
+        id="prediction-indicator"
+        style="
+          padding: 10px;
+          border-radius: 8px;
+          text-align: center;
+          color: #ffffff;
+          text-size: 20px;
+        "
+      >
+        <strong><span id="report-prediction" class="prediction"></span></strong>
+      </div>
+    </div>
+
+    <script>
+      function displayPrediction(results) {
+        var predictionText = results === 1.0 ? "Eligible" : "Not-Eligible";
+        var reportPrediction = document.getElementById("report-prediction");
+        var predictionIndicator = document.getElementById(
+          "prediction-indicator"
+        );
+
+        // Populate report with input values
+        document.getElementById("report-applicant-name").innerText =
+          document.getElementById("app_name").value;
+        document.getElementById("report-coapplicant-name").innerText =
+          document.getElementById("coapp_name").value;
+        document.getElementById("report-no-of-dependents").innerText =
+          document.getElementById("no_of_dependents").value;
+        document.getElementById("report-education").innerText =
+          document.getElementById("education").value == 1
+            ? "Graduate"
+            : "Non Graduate";
+        document.getElementById("report-self-employed").innerText =
+          document.getElementById("self_employed").value == 1 ? "Yes" : "No";
+        document.getElementById("report-income-annum").innerText =
+          document.getElementById("income_annum").value;
+        document.getElementById("report-loan-amount").innerText =
+          document.getElementById("loan_amount").value;
+        document.getElementById("report-loan-term").innerText =
+          document.getElementById("loan_term").value;
+        document.getElementById("report-cibil-score").innerText =
+          document.getElementById("cibil_score").value;
+        document.getElementById("report-residential-assets-value").innerText =
+          document.getElementById("residential_assets_value").value;
+        document.getElementById("report-commercial-assets-value").innerText =
+          document.getElementById("commercial_assets_value").value;
+        document.getElementById("report-luxury-assets-value").innerText =
+          document.getElementById("luxury_assets_value").value;
+        document.getElementById("report-bank-asset-value").innerText =
+          document.getElementById("bank_asset_value").value;
+
+        // Display prediction result
+        reportPrediction.innerText = predictionText;
+        reportPrediction.classList.add(
+          predictionText.toLowerCase().replace(/\s/g, "-")
+        );
+
+        // Display the report container
+        document.getElementById("report-container").style.display = "block";
+
+        // Change background color based on prediction
+        predictionIndicator.style.backgroundColor =
+          results === 1 ? "#77DD77" : "#FF6961";
+
+        // Move focus to the report container
+        document
+          .getElementById("report-container")
+          .scrollIntoView({ behavior: "smooth" });
+      }
+
+      document
+        .getElementById("loan_application_form")
+        .addEventListener("submit", function (event) {
+          // Prevent the default form submission behavior
+          event.preventDefault();
+
+          // Check if non-mandatory fields are blank and set their value to 0
+          if (document.getElementById("coapp_name").value === "") {
+            document.getElementById("coapp_name").value = "Not Applicable";
+          }
+          if (
+            document.getElementById("residential_assets_value").value === ""
+          ) {
+            document.getElementById("residential_assets_value").value = 0;
+          }
+          if (document.getElementById("commercial_assets_value").value === "") {
+            document.getElementById("commercial_assets_value").value = 0;
+          }
+          if (document.getElementById("luxury_assets_value").value === "") {
+            document.getElementById("luxury_assets_value").value = 0;
+          }
+          if (document.getElementById("bank_asset_value").value === "") {
+            document.getElementById("bank_asset_value").value = 0;
+          }
+
+          // Simulate prediction results (Replace this with your actual prediction logic)
+          var results = Math.random() >= 0.5 ? 1.0 : 0.0;
+
+          // Display prediction
+          displayPrediction(results);
+        });
+    </script>
+  </body>
 </html>
