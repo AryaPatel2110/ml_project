@@ -1,4 +1,4 @@
-from flask import Flask,request,render_template
+from flask import Flask, jsonify,request,render_template
 import numpy as np
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
@@ -75,6 +75,10 @@ def approval_predict_datapoint():
         return render_template('approval.html', results = results[0])
     
     
+
+@app.route('/dashboard')
+def dash():
+    return render_template('dash.html')
 
 
 if __name__ == "__main__":
