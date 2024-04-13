@@ -775,7 +775,7 @@ input[type='checkbox'] {
 /*    04. Header     */
 /*********************/
 .header {
-	background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url('../images/loanapp.png') center center no-repeat;
+	background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url('static/images/loanapp.png') center center no-repeat;
 	background-size: cover;
 }
 
@@ -791,8 +791,7 @@ input[type='checkbox'] {
 
 .header h1 {
 	margin-bottom: 0.5rem;
-	color: #fff;
-}
+	color: #dcb99d;}
 
 .header .p-large {
 	margin-bottom: 2rem;
@@ -1789,7 +1788,7 @@ a:hover.back-to-top {
 }
 
 .ex-header h1 {
-	color: #fff;
+	color: #dcb99d;
 }
 
 .ex-basic-1 {
