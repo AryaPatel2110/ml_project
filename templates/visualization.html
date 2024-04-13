@@ -1,0 +1,31 @@
+<!-- templates/index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Loan Dashboard</title>
+    <style>
+      /* CSS to display embedded Power BI report in full screen */
+      iframe {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+    </style>
+  </head>
+  <body>
+    <iframe
+      title="loan_defult"
+      width="1140"
+      height="541.25"
+      src="https://app.powerbi.com/reportEmbed?reportId=12090eb2-a9ea-4670-92ae-bfa42ab32036&autoAuth=true&ctid=5ebc44ab-cbc4-4f38-8404-5f6cd09de557"
+      frameborder="0"
+      allowfullscreen="true"
+    ></iframe>
+  </body>
+</html>

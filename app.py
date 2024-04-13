@@ -22,7 +22,7 @@ def index():
 @app.route('/predictions',methods=['GET','POST'])
 def predict_datapoint():
     if request.method=='GET':
-        return render_template('home.html')
+        return render_template('credit_risk.html')
     else:
         data = CustomData(
             person_age=request.form.get('person_age'),
@@ -78,7 +78,7 @@ def approval_predict_datapoint():
 
 @app.route('/dashboard')
 def dash():
-    return render_template('dash.html')
+    return render_template('visualization.html')
 
 
 if __name__ == "__main__":
