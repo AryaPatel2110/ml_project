@@ -1,9 +1,9 @@
-Accuracy score of the model: 0.9313
+Accuracy score of the model: 0.9308
 Classification report:
               precision    recall  f1-score   support
 
          0.0       0.93      0.99      0.96      7398
-         1.0       0.96      0.72      0.82      2106
+         1.0       0.95      0.72      0.82      2106
 
     accuracy                           0.93      9504
    macro avg       0.94      0.86      0.89      9504

@@ -42,7 +42,7 @@ class ModelTrainer:
             y_pred = rf_classifier.predict(x_test)
             
             logging.info("Classification Report Is Initiated")
-            model_report(y_pred=y_pred, y_test=y_test,file_path=self.model_trainer_config.model_report_path)
+            model_report(y_pred=y_pred, y_test=y_test,file_path=self.model_trainer_config.model_report_path,output='artifacts/output/confusion_matrix.png')
             
             logging.info("Save rf model")
             

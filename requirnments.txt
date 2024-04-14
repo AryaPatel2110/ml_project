@@ -1,7 +1,7 @@
-pandas
-numpy
-seaborn
-scikit-learn
-dill
-flask
+pandas==2.2.2
+numpy==1.26.4
+seaborn==0.13.2
+scikit-learn==1.4.2
+dill==0.3.8
+Flask==3.0.3
 -e.

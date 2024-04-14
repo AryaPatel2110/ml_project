@@ -28,7 +28,7 @@ def save_object(file_path, obj):
         raise CustomException(e, sys)
     
 
-def model_report(y_pred, y_test, file_path):
+def model_report(y_pred, y_test, file_path, output):
     try:
         os.makedirs(os.path.dirname(file_path), exist_ok=True)
         with open(file_path, "w") as file:
@@ -47,7 +47,7 @@ def model_report(y_pred, y_test, file_path):
             plt.figure(figsize=(6, 6))
             sns.heatmap(confusion_matrix(y_test, y_pred), annot=True, cmap="Reds", fmt='g')
             plt.title('Confusion matrix: Random Forest')
-            plt.savefig('artifacts/output/confusion_matrix.png')
+            plt.savefig(output)
             plt.close()
         
             file.write("Confusion matrix saved as confusion_matrix.png")
