@@ -4,8 +4,6 @@ import pandas as pd
 from sklearn.preprocessing import StandardScaler
 from approval.pipeline.approval_pridict_pipeline import ApproveCustomData, ApprovePredictPipeline
 from src.pipeline.predict_pipeline import CustomData, PredictPipeline
-import plotly.graph_objs as go
-import json
 
 data = pd.read_csv('notebook/final_data.csv')
 
