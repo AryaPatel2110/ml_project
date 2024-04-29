@@ -18,6 +18,8 @@ class PredictPipeline:
 
             data_scaled = preprocessor.transform(features)
             preds = model.predict(data_scaled)
+            
+            print('Prediction:',preds)
         
             return preds
         except Exception as e:
@@ -36,7 +38,7 @@ class CustomData:
         loan_grade: str,
         loan_amnt: int,
         loan_int_rate: float,
-        loan_percent_income:int,
+        loan_percent_income:float,
         cb_person_default_on_file:str,
         cb_person_cred_hist_length:int):
         

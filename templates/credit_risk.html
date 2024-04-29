@@ -13,7 +13,7 @@
         font-family: "Poppins";
         margin: 0;
         padding: 0;
-        background-color: #2a577b;/* Background color */
+        background-color: #2a577b; /* Background color */
         /* background-image: url("static/images/loanapp.png"); */
         background-size: cover;
         background-position: center;
@@ -130,7 +130,7 @@
         color: #dcb99d; /* Text color */
         padding: 10px 10px;
         border: none;
-        border-radius: 5px;
+        border-radius: 5px 5px 0px 0px;
         cursor: pointer;
         transition: background-color 0.3s ease;
         width: 100%;
@@ -141,6 +141,8 @@
 
       input[type="submit"]:hover {
         background-color: #244b6a; /* Background color */
+        border-radius: 5px 5px 0px 0px;
+
       }
 
       /* Custom styles */
@@ -309,6 +311,26 @@
         list-style: outside none none;
         text-decoration: none;
       }
+
+      /* CSS styles for the clear button */
+      .report-button {
+        background-color: #54738c; /* Primary color */
+        margin-top: 20px;
+        color: #dcb99d; /* Text color */
+        padding: 10px 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        width: 100%;
+        font-family: "Poppins", Arial, sans-serif;
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      .report-button:hover {
+        background-color: #244b6a; /* Background color */
+      }
     </style>
   </head>
   <body>
@@ -328,7 +350,6 @@
             <li class="LI-749rd2fdrz">
               <a href="/dashboard" class="SPAN-f582iyn5ih">Visualization</a>
             </li>
-            
           </ul>
         </div>
       </div>
@@ -340,7 +361,11 @@
           Credit Risk Evaluator
         </h2>
       </div>
-      <form id="loan_application_form">
+      <form
+        id="loan_application_form"
+        action="{{ url_for('predict_datapoint')}}"
+        method="post"
+      >
         <div class="form-row">
           <div class="form-group">
             <label for="app_name">Applicant's Name* :</label>
@@ -408,7 +433,6 @@
               <option value="VENTURE">VENTURE</option>
               <option value="HOMEIMPROVEMENT">HOMEIMPROVEMENT</option>
               <option value="DEBTCONSOLIDATION">DEBTCONSOLIDATION</option>
-
             </select>
           </div>
           <div class="form-group">
@@ -474,7 +498,7 @@
           </div>
           <div class="form-group">
             <label for="cb_person_cred_hist_length"
-              >Credit History Length* :</label
+              >Credit History Length (In years)* :</label
             >
             <input
               type="number"
@@ -486,75 +510,39 @@
         </div>
 
         <input type="submit" value="Submit" />
-      </form>
-    </div>
+        
 
-    <div class="report-container" id="report-container" style="display: none">
-      <div class="tital">
-        <h2 style="text-align: center">Profile</h2>
-      </div>
-      <ul>
-        <li>
-          Applicant's Name:
-          <span id="report-applicant-name"></span>
-        </li>
-        <li>
-          Co-Applicant's Name:
-          <span id="report-coapplicant-name"></span>
-        </li>
-        <li>
-          Co/Applicant Age: <span id="report-age"></span>
-        </li>
-        <li>
-          Co/Applicant's Annual Income:
-          <span id="report-income"></span>
-        </li>
-        <li>
-          Co/Applicant's Home Ownership:
-          <span id="report-home-ownership"></span>
-        </li>
-        <li>
-          Co/Applicant's Employment length (in years):</strong>
-          <span id="report-employment-length"></span>
-        </li>
-        <li>
-          Loan Intent: <span id="report-loan-intent"></span>
-        </li>
-        <li>
-          Loan Amount: <span id="report-loan-amount"></span>
-        </li>
-        <li>
-          Loan as Percent of Income:
-          <span id="report-loan-percent-income"></span>
-        </li>
-        <li>
-          Loan Interest Rate:
-          <span id="report-loan-interest-rate"></span>
-        </li>
-        <li>
-          Loan Grade: <span id="report-loan-grade"></span>
-        </li>
-        <li>
-          Default on File:
-          <span id="report-default-on-file"></span>
-        </li>
-        <li>
-          Credit History Length:
-          <span id="report-credit-history-length"></span>
-        </li>
-      </ul>
-      <div
-        id="prediction-indicator"
-        style="
-          padding: 10px;
-          border-radius: 8px;
-          text-align: center;
-          color: #ffffff;
-          text-size: 20px;
-        "
-      >
-        <strong><span id="report-prediction" class="prediction"></span></strong>
-      </div>
+        {% if results == 1 %}
+        <div
+        id="results-placeholder"
+          style="
+            padding: 10px;
+            border-radius: 0px 0px 8px 8px;
+            text-align: center;
+            color: #ffffff;
+            font-size: 20px;
+            background-color: #ff6961;
+          "
+        >
+          <strong><span> Risk</span></strong>
+        </div>
+        {% elif results == 0 %}
+        <div
+        id="results-placeholder"
+          style="
+            padding: 10px;
+            border-radius: 0px 0px 8px 8px;
+            text-align: center;
+            color: #ffffff;
+            font-size: 20px;
+            background-color: #77dd77;
+          "
+        >
+          <strong><span> Safe</span></strong>
+        </div>
+        {% else %} {% endif %}
+        <!-- Modified line for the clear button -->
+      </form>
     </div>
 
     <script>
@@ -596,72 +584,21 @@
           loanPercentIncome.toFixed(2);
       }
 
-      function displayPrediction(results) {
-        var predictionText = results === 1.0 ? "RISK" : "SAFE";
-        var reportPrediction = document.getElementById("report-prediction");
-        var predictionIndicator = document.getElementById(
-          "prediction-indicator"
-        );
-
-        // Populate report with input values
-        document.getElementById("report-applicant-name").innerText =
-          document.getElementById("app_name").value;
-        document.getElementById("report-coapplicant-name").innerText =
-          document.getElementById("coapp_name").value;
-        document.getElementById("report-age").innerText =
-          document.getElementById("person_age").value;
-        document.getElementById("report-income").innerText =
-          document.getElementById("person_income").value;
-        document.getElementById("report-home-ownership").innerText =
-          document.getElementById("person_home_ownership").value;
-        document.getElementById("report-employment-length").innerText =
-          document.getElementById("person_emp_length").value;
-        document.getElementById("report-loan-intent").innerText =
-          document.getElementById("loan_intent").value;
-        document.getElementById("report-loan-amount").innerText =
-          document.getElementById("loan_amnt").value;
-        document.getElementById("report-loan-percent-income").innerText =
-          document.getElementById("loan_percent_income").value;
-        document.getElementById("report-loan-interest-rate").innerText =
-          document.getElementById("loan_int_rate").value;
-        document.getElementById("report-loan-grade").innerText =
-          document.getElementById("loan_grade").value;
-        document.getElementById("report-default-on-file").innerText =
-          document.getElementById("cb_person_default_on_file").value;
-        document.getElementById("report-credit-history-length").innerText =
-          document.getElementById("cb_person_cred_hist_length").value;
-
-        // Display prediction result
-        reportPrediction.innerText = predictionText;
-        reportPrediction.classList.add(
-          predictionText.toLowerCase().replace(/\s/g, "-")
-        );
-
-        // Display the report container
-        document.getElementById("report-container").style.display = "block";
-
-        // Change background color based on prediction
-        predictionIndicator.style.backgroundColor =
-          results === 0 ? "#77DD77" : "#FF6961";
-
-        // Move focus to the report container
-        document
-          .getElementById("report-container")
-          .scrollIntoView({ behavior: "smooth" });
+      if (performance.navigation.type === 1) {
+        // Page has been refreshed, set the value of {{ results }} to an empty string
+        document.getElementById("results-placeholder").innerHTML = "";
       }
 
       document
-        .getElementById("loan_application_form")
-        .addEventListener("submit", function (event) {
-          // Prevent the default form submission behavior
-          event.preventDefault();
+      .getElementById("results-placeholder")
+      .scrollIntoView({ behavior: "smooth" });
 
-          // Simulate prediction results (Replace this with your actual prediction logic)
-          var results = Math.random() >= 0.5 ? 1.0 : 0.0;
 
-          // Display prediction
-          displayPrediction(results);
-        });
+
+      
+      
     </script>
+
+    <!-- Add this section at the end of your HTML body -->
   </body>
 </html>

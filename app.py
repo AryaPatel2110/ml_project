@@ -42,7 +42,7 @@ def predict_datapoint():
         predict_pipeline = PredictPipeline()
         results = predict_pipeline.predict(pred_df)
          
-        return render_template('home.html', results = results[0])
+        return render_template('credit_risk.html', results = results[0])
     
 
 @app.route('/approval',methods=['GET','POST'])
